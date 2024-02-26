@@ -29,9 +29,8 @@ class MovieController extends Controller
     public function show($id)
     {
         //recupera ogni singolo movie
-        $movies = config('movies');
-
-        $movie = $movies[$id];
+        //select * from movies where id = $id poi first mi esgue la query e mi restituisce solo il primo elemento 
+        $movie = Movie::where('id', $id)->first();
 
         return view('movies.show', compact('movie'));
     }
